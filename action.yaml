@@ -11,6 +11,10 @@ inputs:
       are not supported, because partial cache restoration leads to a "snowball"
       effect.
     required: true
+  bash:
+    description: Path to the Bash executable
+    required: false
+    default: "/usr/bin/bash"
   read-only:
     description: If "true", disables saving the cache upon cache miss
     required: false

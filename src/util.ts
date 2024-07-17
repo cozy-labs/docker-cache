@@ -1,7 +1,7 @@
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
 
-import { error, info, setFailed } from "@actions/core";
+import { error, getInput, info, setFailed } from "@actions/core";
 
 interface ConsoleOutput {
   stdout: string;
@@ -17,7 +17,7 @@ const execBashCommand = async (
   const shell =
     platform === "win32"
       ? "C:\\Program Files\\Git\\bin\\bash.exe"
-      : "env bash";
+      : getInput("bash");
   let stdout = "";
   try {
     const output: ConsoleOutput = await execAsPromised(command, { shell });
